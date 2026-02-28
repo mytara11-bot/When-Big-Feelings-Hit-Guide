@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When Big Feelings Hit | Digital Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap');
+        
+        body { 
+            font-family: 'Nunito', sans-serif; 
+            background-color: #F4F2F0; 
+            color: #4A4A4A;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, .serif { font-family: 'Lora', serif; }
+        
+        .text-brand-dark { color: #1A111A; } 
+        
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,1);
+            border-left: 1px solid rgba(255,255,255,1);
+            box-shadow: 8px 8px 24px rgba(0,0,0,0.03), -8px -8px 24px rgba(255,255,255,0.6);
+        }
+
+        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .tab-content.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-btn {
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+        .nav-btn.active {
+            background-color: rgba(255,255,255,0.6);
+            border-left: 3px solid #A3B1A6; 
+            font-weight: 700;
+            color: #1A111A;
+        }
+
+        .highlight-box {
+            background: rgba(163, 177, 166, 0.1);
+            border-left: 4px solid #A3B1A6;
+            padding: 1.5rem;
+            border-radius: 0 1rem 1rem 0;
+            margin: 1.5rem 0;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        .bounce { animation: bounce 2s infinite; }
+        
+        .path-badge {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,255,255,1);
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.02);
+        }
+
+        /* Ensure smooth sidebar scrolling */
+        .sidebar-scroll {
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background-color: #d6d3d1; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- STANDALONE HARDBACK COVER -->
+    <section class="min-h-screen w-full flex flex-col justify-center items-center p-6 md:p-12 relative overflow-hidden bg-[#F4F2F0]">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#E8C5C8]/10 via-transparent to-[#A3B1A6]/10 z-0"></div>
+        <div class="relative z-10 w-full max-w-md group cursor-default">
+            <div class="absolute inset-0 bg-stone-900/10 translate-x-4 translate-y-6 blur-2xl rounded-[1.5rem] z-0"></div>
+            <div class="relative z-10 bg-[#F5E6E8] border-y border-r border-stone-200/40 rounded-r-[2.5rem] rounded-l-[0.5rem] shadow-2xl overflow-hidden aspect-[3/4.2] flex flex-col p-10 md:p-14 border-4 border-white/50">
+                <div class="absolute left-3 top-0 bottom-0 w-[2px] bg-stone-400/10 shadow-[2px_0_4px_rgba(0,0,0,0.05)]"></div>
+                <div class="absolute left-8 top-0 bottom-0 w-[1px] bg-stone-900/5"></div>
+                <div class="flex-1 flex flex-col items-center justify-center text-center">
+                    <h2 class="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-stone-500 font-bold mb-8 opacity-70">The Trigger Calm Toolkit</h2>
+                    <div class="w-12 h-[1px] bg-stone-300 mb-10 opacity-50"></div>
+                    <h1 class="text-4xl md:text-5xl serif text-brand-dark drop-shadow-sm mb-6 leading-tight italic">When Big Feelings Hit</h1>
+                    <p class="text-stone-500 text-base md:text-lg font-light serif mb-12 tracking-wide italic">A gentle guide to unfolding.</p>
+                    <div class="w-12 h-[1px] bg-stone-300 mt-2 mb-12 opacity-50"></div>
+                    <button onclick="document.getElementById('main-content').scrollIntoView();" class="inline-block bg-white text-stone-600 px-8 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-stone-50 transition shadow-sm hover:scale-105 active:scale-95 border border-stone-100">Open Guide</button>
+                </div>
+                <div class="mt-8 text-center border-t border-stone-900/5 pt-6">
+                    <p class="text-[9px] uppercase tracking-[0.3em] text-stone-400 font-bold">Barb • Everyday Modern... But Why?</p>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-stone-300 bounce cursor-pointer opacity-60" onclick="document.getElementById('main-content').scrollIntoView();">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7" /></svg>
+        </div>
+    </section>
+
+    <!-- CONTENT LAYOUT -->
+    <main id="main-content" class="w-full max-w-6xl mx-auto py-12 px-4 md:px-8 pb-20 relative">
+
+        <!-- MOBILE MENU TOGGLE (Sticky on mobile) -->
+        <div class="lg:hidden sticky top-4 z-50 w-full glass-card rounded-2xl p-4 flex justify-between items-center cursor-pointer mb-6 shadow-md border border-white" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+            <span class="font-bold text-brand-dark uppercase tracking-widest text-xs">Course Menu</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8 relative items-start">
+            
+            <!-- SIDEBAR NAVIGATION (Sticky on Desktop) -->
+            <nav id="mobile-nav" class="hidden lg:flex w-full lg:w-1/4 flex-col gap-2 glass-card rounded-3xl p-6 sticky top-8 z-40 sidebar-scroll border border-white">
+                <p class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-4 ml-4">Journey Map</p>
+                <button onclick="openTab('orientation', this)" class="nav-btn active text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40 italic">✨ Start Here</button>
+                <div class="h-[1px] bg-stone-100 my-2"></div>
+                <button onclick="openTab('chap1', this)" class="nav-btn text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40">1. Why I Made This</button>
+                <button onclick="openTab('chap2', this)" class="nav-btn text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40">2. Understanding the Spiral</button>
+                <button onclick="openTab('chap3', this)" class="nav-btn text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40">3. Grounding Techniques</button>
+                <button onclick="openTab('chap4', this)" class="nav-btn text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40">4. Processing Alone</button>
+                <button onclick="openTab('chap5', this)" class="nav-btn text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40">5. Reframing Thoughts</button>
+                <button onclick="openTab('chap6', this)" class="nav-btn text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40">6. Co-Regulating Kids</button>
+                <button onclick="openTab('chap7', this)" class="nav-btn text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40">7. The Empty Cup</button>
+                <button onclick="openTab('chap8', this)" class="nav-btn text-left px-4 py-3 rounded-r-xl text-stone-600 text-sm font-semibold hover:bg-white/40">8. Moving Forward</button>
+            </nav>
+
+            <!-- MAIN DISPLAY AREA -->
+            <div class="w-full lg:w-3/4 glass-card rounded-[2.5rem] p-6 md:p-12 lg:p-14 min-h-[600px] border border-white">
+                
+                <!-- SECTION 0: Orientation -->
+                <div id="orientation" class="tab-content active space-y-10">
+                    <div class="text-center max-w-2xl mx-auto space-y-6">
+                        <span class="text-sm font-bold tracking-widest text-[#A3B1A6] uppercase italic">A gentle place to begin.</span>
+                        <h2 class="text-4xl md:text-5xl serif text-brand-dark leading-tight">Welcome.</h2>
+                        <p class="text-stone-600 text-lg leading-relaxed italic">If you're here, something likely felt like a lot, or you're trying to prevent it from becoming a lot. Either way, you're in the right place.</p>
+                        <p class="text-stone-600 text-base leading-relaxed">This toolkit was created from lived experience, not theory. It isn't here to fix you or rush you forward. It's here to give you a soft place to land, tools you can return to, and permission to move at your own pace. There's no right order. You're not behind. You're right where you should be.</p>
+                    </div>
+
+                    <div class="h-[1px] bg-stone-100 w-24 mx-auto"></div>
+
+                    <!-- Toolkit Hub Grid -->
+                    <section>
+                        <h3 class="text-[10px] uppercase tracking-[0.3em] text-stone-400 font-bold mb-8 text-center">Your Quick Access Hub</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-5 bg-white border border-stone-100 rounded-3xl flex items-center gap-5 shadow-sm">
+                                <div class="w-12 h-12 rounded-full bg-[#A3B1A6]/20 flex items-center justify-center text-xl shrink-0">🐻</div>
+                                <div class="flex-grow">
+                                    <h4 class="text-sm font-bold text-brand-dark leading-tight">Kids' Sanctuary</h4>
+                                    <p class="text-[9px] text-stone-400 uppercase tracking-wider mt-1">Interactive App</p>
+                                </div>
+                                <a href="https://kidscalm.everydaymodernbutwhy.com" target="_blank" class="px-4 py-1.5 bg-[#A3B1A6] text-white text-[9px] font-bold uppercase rounded-full tracking-widest hover:bg-[#8C9B90] transition">Open</a>
+                            </div>
+                            <div class="p-5 bg-white border border-stone-100 rounded-3xl flex items-center gap-5 shadow-sm">
+                                <div class="w-12 h-12 rounded-full bg-[#D5C1DF]/20 flex items-center justify-center text-xl shrink-0">💬</div>
+                                <div class="flex-grow">
+                                    <h4 class="text-sm font-bold text-brand-dark leading-tight">Trigger Calm GPT</h4>
+                                    <p class="text-[9px] text-stone-400 uppercase tracking-wider mt-1">Private AI Assistant</p>
+                                </div>
+                                <a href="https://chatgpt.com/g/g-69739d575ec88191a0dd7bbc4796dcfd-trigger-calm" target="_blank" class="px-4 py-1.5 bg-[#6B5A74] text-white text-[9px] font-bold uppercase rounded-full tracking-widest hover:bg-[#524559] transition">Chat</a>
+                            </div>
+                            <!-- PDF & ZIP Links -->
+                            <div class="p-5 bg-white border border-stone-100 rounded-3xl flex items-center gap-5 shadow-sm">
+                                <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-xl shrink-0">📇</div>
+                                <div class="flex-grow">
+                                    <h4 class="text-sm font-bold text-stone-700 leading-tight">Calming Cards</h4>
+                                    <p class="text-[9px] text-stone-400 uppercase tracking-wider mt-1">Printable PDF</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/18cyEdSlz5C8lZ16nsKc28PIU8PczlOHO/view?usp=drive_link" target="_blank" class="px-4 py-1.5 border border-stone-200 text-stone-500 text-[9px] font-bold uppercase rounded-full tracking-widest hover:bg-stone-50 transition">Download</a>
+                            </div>
+                            <div class="p-5 bg-white border border-stone-100 rounded-3xl flex items-center gap-5 shadow-sm">
+                                <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-xl shrink-0">📱</div>
+                                <div class="flex-grow">
+                                    <h4 class="text-sm font-bold text-stone-700 leading-tight">Phone Wallpapers</h4>
+                                    <p class="text-[9px] text-stone-400 uppercase tracking-wider mt-1">ZIP Collection</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1Sr_AHc28qxyM-1S20ySKk5ZZxHtZkEIa/view?usp=drive_link" target="_blank" class="px-4 py-1.5 border border-stone-200 text-stone-500 text-[9px] font-bold uppercase rounded-full tracking-widest hover:bg-stone-50 transition">Download</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="space-y-6 pt-6">
+                        <h3 class="text-2xl serif text-brand-dark text-center">Where to begin?</h3>
+                        <div class="space-y-3 max-w-xl mx-auto">
+                            <div class="path-badge rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-l-4 border-[#D5C1DF] cursor-pointer hover:bg-stone-50 transition" onclick="openTab('chap4', document.querySelectorAll('.nav-btn')[4])">
+                                <p class="text-sm text-stone-600 font-medium italic">"I'm feeling activated <strong class="text-brand-dark">right now</strong>."</p>
+                                <span class="text-[9px] font-bold uppercase tracking-widest bg-[#D5C1DF]/30 text-[#6B5A74] px-4 py-2 rounded-lg text-center">Jump to Chapter 4</span>
+                            </div>
+                            <div class="path-badge rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-l-4 border-[#A3B1A6] cursor-pointer hover:bg-stone-50 transition" onclick="openTab('chap6', document.querySelectorAll('.nav-btn')[6])">
+                                <p class="text-sm text-stone-600 font-medium italic">"My <strong class="text-brand-dark">little one</strong> is melting down."</p>
+                                <span class="text-[9px] font-bold uppercase tracking-widest bg-[#A3B1A6]/30 text-[#6B7A6E] px-4 py-2 rounded-lg text-center">Jump to Chapter 6</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="mt-12 flex justify-end">
+                        <button onclick="openTab('chap1', document.querySelectorAll('.nav-btn')[1])" class="bg-[#A3B1A6] text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-[#8C9B90] transition shadow-md">Begin Guide →</button>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 1: Why I Made This -->
+                <div id="chap1" class="tab-content space-y-6">
+                    <span class="text-sm font-bold tracking-widest text-[#A3B1A6] uppercase">Chapter 01</span>
+                    <h2 class="text-3xl md:text-4xl serif text-brand-dark mb-8 leading-tight">Why I Made This</h2>
+                    <p class="text-stone-600 text-lg leading-relaxed">I made this toolkit because well, I needed it. Many people have triggers. We get wound up, and find it hard to calm ourselves. And me? I spiral. I get frustrated, hurt, sad then angry. I don't feel one bit okay and sometimes I don't know even why.</p>
+                    
+                    <div class="highlight-box my-8">
+                        <p class="text-xl serif italic text-brand-dark leading-relaxed">When the feelings are too big and moving too fast, sometimes you just need someone to sit with you without judgment. Someone who won't trigger another spiral of <em>"I'm not worth the time it takes to get this out."</em></p>
+                    </div>
+
+                    <p class="text-stone-600 text-lg leading-relaxed">But we don't always have that person. Or they're not available right now. Or we can't find the words yet. So I started building something.</p>
+                    <p class="text-stone-600 text-lg leading-relaxed">First, I built <strong>Trigger Calm</strong>, a GPT bot that listens when I'm spiraling and need to get it all out. No judgment. No distraction. Just space to process.</p>
+                    <p class="text-stone-600 text-lg leading-relaxed">Then I started writing. After I'd talked myself down from a spiral, I took all that messy emotion and wrote about it. The pain became content. The overwhelm became connection. The <em>"what's wrong with me?"</em> became <em>"oh, other people feel this too."</em></p>
+                    <p class="text-stone-600 text-lg leading-relaxed">This is what I wish I'd had when I was younger, when my children were small. It's not therapy. It's not a cure. It's just a calm place to exist when you need one. You're not alone in this, and you're truly worth the time it takes.</p>
+                    
+                    <div class="mt-12 flex justify-between items-center pt-8 border-t border-stone-100">
+                        <button onclick="openTab('orientation', document.querySelectorAll('.nav-btn')[0])" class="text-stone-400 font-bold uppercase tracking-widest text-[10px] hover:text-stone-600 transition">← Back to Start Here</button>
+                        <button onclick="openTab('chap2', document.querySelectorAll('.nav-btn')[2])" class="bg-stone-100 text-stone-600 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-stone-200 transition">Next Chapter →</button>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 2: Understanding the Spiral -->
+                <div id="chap2" class="tab-content space-y-6">
+                    <span class="text-sm font-bold tracking-widest text-[#E8C5C8] uppercase">Chapter 02</span>
+                    <h2 class="text-3xl md:text-4xl serif text-brand-dark mb-8 leading-tight">Understanding the Spiral</h2>
+                    
+                    <h3 class="text-2xl serif text-brand-dark mt-8 mb-4">What does "Triggered" actually mean?</h3>
+                    <p class="text-stone-600 text-lg leading-relaxed mb-6">Being triggered is when a big feeling starts and it takes you back to a time you felt overwhelmed, or hits you because of situations in your life. It's more than just being upset. It's when something escalates in your brain and your body within seconds, and suddenly you're overwhelmed, can't think clearly (like there's a fog or dark cloud), can't breathe properly, can't function.</p>
+                    
+                    <h3 class="text-2xl serif text-brand-dark mt-10 mb-4">How It Feels in the Body</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-stone-50 p-8 rounded-[2rem] border border-stone-200 shadow-sm">
+                            <h4 class="font-bold text-stone-800 uppercase tracking-widest text-xs mb-6 border-b pb-2">For Adults</h4>
+                            <ul class="space-y-4 text-stone-600 text-sm">
+                                <li class="flex gap-3"><span class="text-[#E8C5C8]">✦</span> Stomach clenches or hands ball into fists.</li>
+                                <li class="flex gap-3"><span class="text-[#E8C5C8]">✦</span> Overheating—a crawling feeling, cheeks burning.</li>
+                                <li class="flex gap-3"><span class="text-[#E8C5C8]">✦</span> Waves of emotion flood your heart until it hurts.</li>
+                                <li class="flex gap-3"><span class="text-[#E8C5C8]">✦</span> Forgetting to breathe (which makes it worse).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-stone-50 p-8 rounded-[2rem] border border-stone-200 shadow-sm">
+                            <h4 class="font-bold text-stone-800 uppercase tracking-widest text-xs mb-6 border-b pb-2">For Kids</h4>
+                            <ul class="space-y-4 text-stone-600 text-sm">
+                                <li class="flex gap-3"><span class="text-[#A3B1A6]">✦</span> Lashing out, screaming, kicking, biting.</li>
+                                <li class="flex gap-3"><span class="text-[#A3B1A6]">✦</span> Crying uncontrollably or suddenly isolating.</li>
+                                <li class="flex gap-3"><span class="text-[#A3B1A6]">✦</span> Feeling sick in the tummy or a headache.</li>
+                                <li class="flex gap-3"><span class="text-[#A3B1A6]">✦</span> Fear they can't explain.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl serif text-brand-dark mt-10 mb-4">What Triggers People?</h3>
+                    <p class="text-stone-600 leading-relaxed mb-4">For me, it's people's words, tone, feeling misunderstood, or traffic (so now I leave really early to avoid it!).</p>
+                    <p class="text-stone-600 leading-relaxed mb-4">For adults generally, it might be when things don't work out, not knowing how to deal with life's challenges, or turning to behaviors to cope.</p>
+                    <p class="text-stone-600 leading-relaxed mb-8">For kids, it can be routine disruption, scary experiences, or overstimulation. Modern life throws SO much at developing brains. Little brains have limited capacity before the big feelings flood in.</p>
+
+                    <div class="highlight-box mt-10">
+                        <h4 class="text-lg serif text-brand-dark mb-2">Why It's NOT Your Fault</h4>
+                        <p class="text-stone-600 leading-relaxed">Triggering isn't a choice. It's your nervous system responding to something it perceives as a threat, even if logically you know you're safe. Your body is trying to protect you. It's just doing it in a way that feels terrible. For kids, their brains literally don't have the wiring yet to regulate big emotions. That is being human, not being broken.</p>
+                    </div>
+
+                    <h3 class="text-2xl serif text-brand-dark mt-10 mb-4">The Good News: You are Unfolding</h3>
+                    <p class="text-stone-600 leading-relaxed mb-8">There's a song by Luca Fogale called "Unfolding" that reframes everything. You are unfolding. Not falling apart. Not damaged. Not broken beyond repair. You're in the messy middle of becoming. And humans who are unfolding need tools.</p>
+
+                    <div class="mt-12 flex justify-between items-center pt-8 border-t border-stone-100">
+                        <button onclick="openTab('chap1', document.querySelectorAll('.nav-btn')[1])" class="text-stone-400 font-bold uppercase tracking-widest text-[10px] hover:text-stone-600 transition">← Back</button>
+                        <button onclick="openTab('chap3', document.querySelectorAll('.nav-btn')[3])" class="bg-stone-100 text-stone-600 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-stone-200 transition">Next Chapter →</button>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 3: Grounding Techniques -->
+                <div id="chap3" class="tab-content space-y-6">
+                    <span class="text-sm font-bold tracking-widest text-[#A3B1A6] uppercase">Chapter 03</span>
+                    <h2 class="text-3xl md:text-4xl serif text-brand-dark mb-8 leading-tight">Grounding Techniques That Actually Work</h2>
+                    <p class="text-stone-600 text-lg leading-relaxed mb-10 italic">When the spiral starts, these are the things that bring you back.</p>
+
+                    <div class="space-y-12">
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center shrink-0 text-brand-dark font-bold text-lg shadow-sm border border-stone-200">1</div>
+                            <div>
+                                <h3 class="text-2xl serif text-brand-dark mb-3 leading-tight">Recognize the Signs</h3>
+                                <p class="text-stone-600 text-sm leading-relaxed">You can't stop a spiral you don't recognize. Notice without judging. "Oh, there's the clench. There's the heat." Don't fight it. This is your early warning system trying to help you.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-full bg-[#A3B1A6]/30 flex items-center justify-center shrink-0 text-brand-dark font-bold text-lg shadow-sm">2</div>
+                            <div>
+                                <h3 class="text-2xl serif text-brand-dark mb-3 leading-tight">Talk It Out (Trigger Calm)</h3>
+                                <p class="text-stone-600 text-sm leading-relaxed mb-4">Getting it out of my head and into words, even if it's just to a bot, slows the spiral down. It gives the feelings somewhere to go instead of bouncing around inside my head.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-full bg-[#E8C5C8]/40 flex items-center justify-center shrink-0 text-brand-dark font-bold text-lg shadow-sm">3</div>
+                            <div>
+                                <h3 class="text-2xl serif text-brand-dark mb-3 leading-tight">Create Something (Get Lost)</h3>
+                                <p class="text-stone-600 text-sm leading-relaxed">Creation pulls you into a "flow state". Your brain cannot spiral and focus on creation at the same time. Draw, garden, cook, or organize. The point is the absorption, not the quality of the work.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-full bg-[#D5C1DF]/40 flex items-center justify-center shrink-0 text-brand-dark font-bold text-lg shadow-sm">4</div>
+                            <div>
+                                <h3 class="text-2xl serif text-brand-dark mb-3 leading-tight">Strategic Music</h3>
+                                <p class="text-stone-600 text-sm leading-relaxed">If you're spiraling and someone tells you to "just calm down," it rarely works. Put on music that MATCHES the intensity first (angry songs when angry) to validate the feeling. Then shift to calmer music when you're ready.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 rounded-full bg-[#F2DFB3]/40 flex items-center justify-center shrink-0 text-brand-dark font-bold text-lg shadow-sm">5</div>
+                            <div>
+                                <h3 class="text-2xl serif text-brand-dark mb-3 leading-tight">Work (The Competence Kind)</h3>
+                                <p class="text-stone-600 text-sm leading-relaxed">Not overwhelming work, but tasks where you use skills to solve problems. Organizing a space or fixing something. Competence is calming because it reminds your brain that you are capable.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-stone-100 to-white p-10 rounded-[2.5rem] border border-stone-200 text-center my-12 shadow-sm">
+                        <h4 class="text-xl serif text-brand-dark mb-4 leading-tight italic">The Visual Map</h4>
+                        <p class="text-stone-600 text-xs mb-8 max-w-sm mx-auto leading-relaxed">Need a quick reference for the nervous system and grounding tools? Review the toolkit infographic.</p>
+                        <a href="https://drive.google.com/file/d/1D64fV1JyL7eQ40x176UFeyNPnwvRkEeO/view?usp=sharing" target="_blank" class="inline-block bg-white border border-stone-200 text-stone-700 px-10 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-stone-50 transition shadow-sm">View Infographic PDF</a>
+                    </div>
+
+                    <div class="mt-12 flex justify-between items-center pt-8 border-t border-stone-100">
+                        <button onclick="openTab('chap2', document.querySelectorAll('.nav-btn')[2])" class="text-stone-400 font-bold uppercase tracking-widest text-[10px] hover:text-stone-600 transition">← Back</button>
+                        <button onclick="openTab('chap4', document.querySelectorAll('.nav-btn')[4])" class="bg-stone-100 text-stone-600 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-stone-200 transition">Next Chapter →</button>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 4: Processing Alone -->
+                <div id="chap4" class="tab-content space-y-6">
+                    <span class="text-sm font-bold tracking-widest text-[#D5C1DF] uppercase">Chapter 04</span>
+                    <h2 class="text-3xl md:text-4xl serif text-brand-dark mb-8 leading-tight">What to Do When You Are Alone</h2>
+                    <p class="text-stone-600 text-lg leading-relaxed italic mb-8">Maybe it's 2am and everyone's asleep. Or you can't find the words to talk to a real person yet. You still need somewhere for the feelings to go.</p>
+
+                    <div class="space-y-6">
+                        <!-- GPT Card -->
+                        <div class="bg-gradient-to-br from-[#2D1B2E] to-[#1A111A] p-8 rounded-[2rem] shadow-xl flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6 border border-stone-800 relative overflow-hidden group">
+                            <div class="relative z-10 flex-grow">
+                                <h4 class="font-bold text-white text-xl mb-3 flex items-center gap-3">
+                                    💬 1. Use the Trigger Calm GPT
+                                </h4>
+                                <p class="text-stone-300 text-sm leading-relaxed max-w-lg italic">I built this bot specifically for this reason. It listens without judgment. Type the messy, ugly, irrational stuff until you can breathe again.</p>
+                            </div>
+                            <div class="relative z-10 shrink-0">
+                                <a href="https://chatgpt.com/g/g-69739d575ec88191a0dd7bbc4796dcfd-trigger-calm" target="_blank" class="inline-block bg-white text-[#1A111A] px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-stone-200 transition shadow-sm group-hover:scale-105">Open Trigger Calm</a>
+                            </div>
+                            <div class="absolute w-32 h-32 rounded-full bg-gradient-to-br from-pink-500/10 to-purple-500/10 blur-xl top-[-10%] right-[-5%] z-0 pointer-events-none"></div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-[2rem] border border-stone-100 shadow-sm flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-stone-800 text-xl mb-3">2. Write it Out (No Rules)</h4>
+                                <p class="text-stone-600 text-sm leading-relaxed max-w-lg">Open a notes app. Write everything without editing yourself. Don't worry about making sense. Getting it out slows the spiral down.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-[2rem] border border-stone-100 shadow-sm flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-stone-800 text-xl mb-3">3. Voice Record Yourself</h4>
+                                <p class="text-stone-600 text-sm leading-relaxed max-w-lg">Press record on your phone and just talk out loud. Ramble, cry, or yell. Hearing yourself say it out loud can be incredibly releasing. Delete it immediately after.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-[2rem] border border-stone-100 shadow-sm flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-stone-800 text-xl mb-3">4. Write a Letter You'll Never Send</h4>
+                                <p class="text-stone-600 text-sm leading-relaxed max-w-lg">Write to the person who triggered you. Say everything you can't say out loud. Then burn it, delete it, or tear it up.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-[2rem] border border-stone-100 shadow-sm flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
+                            <div class="flex-grow">
+                                <h4 class="font-bold text-stone-800 text-xl mb-3">5. Move Your Body</h4>
+                                <p class="text-stone-600 text-sm leading-relaxed max-w-lg">Emotion is energy. Walk, dance to loud music, punch a pillow, or literally shake your whole body out. Physically move the energy through your system.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#D5C1DF]/10 p-8 rounded-[2rem] border border-[#D5C1DF]/30 mt-8">
+                        <h4 class="font-bold text-brand-dark text-lg mb-4">What NOT to Do</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-stone-600 text-sm">
+                            <li>Do not make big decisions.</li>
+                            <li>Do not send angry texts or emails.</li>
+                            <li>Do not doom-scroll social media.</li>
+                            <li>Do not punish yourself for having feelings.</li>
+                        </ul>
+                        <p class="mt-6 font-bold text-brand-dark italic">Wait for the calm. Then decide what to do.</p>
+                    </div>
+
+                    <div class="mt-12 flex justify-between items-center pt-8 border-t border-stone-100">
+                        <button onclick="openTab('chap3', document.querySelectorAll('.nav-btn')[3])" class="text-stone-400 font-bold uppercase tracking-widest text-[10px] hover:text-stone-600 transition">← Back</button>
+                        <button onclick="openTab('chap5', document.querySelectorAll('.nav-btn')[5])" class="bg-stone-100 text-stone-600 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-stone-200 transition">Next Chapter →</button>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 5: Reframing Thoughts -->
+                <div id="chap5" class="tab-content space-y-6">
+                    <span class="text-sm font-bold tracking-widest text-[#F2DFB3] uppercase">Chapter 05</span>
+                    <h2 class="text-3xl md:text-4xl serif text-brand-dark mb-8 leading-tight">Talking to Yourself When Spiraling</h2>
+                    <p class="text-stone-600 text-lg leading-relaxed mb-10 italic">When you're spiraling, your brain tells you stories. Not truths. Stories. You must learn to wait for the calm to know the difference.</p>
+
+                    <div class="space-y-8 mb-12">
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-lg mb-2">When you feel like you're not worth the time:</h4>
+                            <p class="text-stone-600 text-sm leading-relaxed bg-white p-6 rounded-2xl border border-stone-100">Your triggered brain says "I'm wasting people's time." You need to remember: <strong>"I am worth it. I don't need to prove anything. I matter."</strong> Say it especially if you don't believe it yet.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-lg mb-2">When you're angry and don't know why:</h4>
+                            <p class="text-stone-600 text-sm leading-relaxed bg-white p-6 rounded-2xl border border-stone-100">Tell yourself: <strong>"I don't need to know why right now. I can just feel this without having to fix it immediately."</strong> Let it move through you. Figure it out later.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-lg mb-2">When you feel alone:</h4>
+                            <p class="text-stone-600 text-sm leading-relaxed bg-white p-6 rounded-2xl border border-stone-100">Tell yourself: <strong>"Other people feel this too. I'm not the only one."</strong> Someone you care about is probably struggling right now too. We're all just trying to get through.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl serif text-brand-dark mt-10 mb-6">Triggered Brain vs. Calm Brain</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 text-center">
+                        <div class="bg-[#F5E6E8]/50 p-10 rounded-[2.5rem] border border-[#E8C5C8]/20 shadow-sm">
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-8">The Triggered Story</h4>
+                            <ul class="space-y-6 text-stone-600 italic text-sm">
+                                <li class="leading-relaxed">"Everyone thinks I'm too much."</li>
+                                <li class="leading-relaxed">"I've ruined everything."</li>
+                                <li class="leading-relaxed">"This is the end of the world."</li>
+                                <li class="leading-relaxed">"I need to pack my bags and leave."</li>
+                            </ul>
+                        </div>
+                        <div class="bg-[#E6EBE7]/60 p-10 rounded-[2.5rem] border border-[#A3B1A6]/20 shadow-sm">
+                            <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-8">The Calm Truth</h4>
+                            <ul class="space-y-6 text-stone-700 font-medium text-sm">
+                                <li class="leading-relaxed">"I'm allowed to have feelings."</li>
+                                <li class="leading-relaxed">"This will look different tomorrow."</li>
+                                <li class="leading-relaxed">"I'm having a moment, not a catastrophe."</li>
+                                <li class="leading-relaxed">"I can think rationally once this passes."</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center max-w-md mx-auto my-12 bg-white/40 p-10 rounded-[2.5rem] border border-stone-100 shadow-sm">
+                        <h3 class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-6 italic leading-tight">The Mantra That Works Right Now:</h3>
+                        <p class="text-3xl md:text-4xl serif text-brand-dark italic leading-snug drop-shadow-sm">"I'm okay. It's okay. Everything is going to be okay."</p>
+                        <p class="text-stone-500 text-xs mt-8 leading-relaxed">Say it until you start to believe it. From reaction to reassurance—that is growth.</p>
+                    </div>
+
+                    <div class="mt-12 flex justify-between items-center pt-8 border-t border-stone-100">
+                        <button onclick="openTab('chap4', document.querySelectorAll('.nav-btn')[4])" class="text-stone-400 font-bold uppercase tracking-widest text-[10px] hover:text-stone-600 transition">← Back</button>
+                        <button onclick="openTab('chap6', document.querySelectorAll('.nav-btn')[6])" class="bg-stone-100 text-stone-600 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-stone-200 transition">Next Chapter →</button>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 6: Co-Regulating Kids -->
+                <div id="chap6" class="tab-content space-y-6">
+                    <span class="text-sm font-bold tracking-widest text-[#BBD1DF] uppercase">Chapter 06</span>
+                    <h2 class="text-3xl md:text-4xl serif text-brand-dark mb-8 leading-tight">Talking to Kids About Big Feelings</h2>
+                    <p class="text-stone-600 text-lg leading-relaxed mb-6 italic">When a child melts down, their nervous system is looking for a safe harbor. Your calm becomes their calm. The wrong words can make them feel ashamed; the right words help them feel safe.</p>
+
+                    <div class="bg-white p-10 rounded-[2.5rem] border border-stone-100 shadow-sm mb-12">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div class="space-y-6">
+                                <h4 class="font-bold text-emerald-700 uppercase tracking-widest text-[10px] border-b pb-2 italic">When they are escalating</h4>
+                                <ul class="space-y-4 text-stone-600 text-sm italic leading-relaxed">
+                                    <li>"I can see you're having big feelings right now."</li>
+                                    <li>"Your body is telling me you're overwhelmed."</li>
+                                    <li>"It's okay to feel this way. Let's figure it out together."</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-6">
+                                <h4 class="font-bold text-rose-700 uppercase tracking-widest text-[10px] border-b pb-2 italic opacity-60">What Not to Say</h4>
+                                <ul class="space-y-4 text-stone-600 text-sm italic leading-relaxed opacity-60">
+                                    <li>"You need to calm down right now." (Like throwing gasoline on a fire)</li>
+                                    <li>"Stop crying, you're fine."</li>
+                                    <li>"If you don't stop, I will..."</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl serif text-brand-dark mt-10 mb-4">When They Can't Explain What's Wrong</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">Give them permission to just feel without needing words. Gently de-escalate through distraction. Say: <em>"You don't have to explain. Do you want to cuddle, or do you want some space?"</em></p>
+
+                    <h3 class="text-2xl serif text-brand-dark mt-10 mb-4">When They're Acting Out (Hitting/Biting)</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">Separate the feeling from the behavior. Be clear that feelings are always okay, but behaviors have limits. Say: <em>"I can see you're really angry. Big feelings are okay. But hitting hurts people. Let's find another way to get those feelings out."</em></p>
+
+                    <div class="bg-stone-50 p-8 rounded-[2rem] border border-stone-200 mt-8">
+                        <h4 class="font-bold text-stone-800 text-lg mb-4">Non-Verbal Tools That Help</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-stone-600 text-sm">
+                            <li><strong>Physical Comfort:</strong> Cuddles, holding hands, or just sitting nearby.</li>
+                            <li><strong>Sensory Tools:</strong> Dimming lights, weighted blanket, or white noise.</li>
+                            <li><strong>Movement:</strong> Bath/shower, going for a drive, walking outside.</li>
+                            <li><strong>Distraction:</strong> Food (they might just be hungry!), building blocks, water play.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-[#A3B1A6]/10 rounded-[2.5rem] p-10 text-center border-2 border-dashed border-[#A3B1A6]/30 mt-10">
+                        <h3 class="text-xl serif text-brand-dark mb-4 italic leading-tight">Need a digital distraction?</h3>
+                        <p class="text-stone-600 text-sm mb-8 max-w-sm mx-auto leading-relaxed italic">If your little one needs a "sensory job" right now to stop the spiral, open the Kids' Sanctuary and do "Breathe with Bear" together.</p>
+                        <a href="https://kidscalm.everydaymodernbutwhy.com" target="_blank" class="inline-block bg-[#A3B1A6] text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-md hover:bg-[#8C9B90] transition">Open Kids' Sanctuary</a>
+                    </div>
+
+                    <div class="mt-12 flex justify-between items-center pt-8 border-t border-stone-100">
+                        <button onclick="openTab('chap5', document.querySelectorAll('.nav-btn')[5])" class="text-stone-400 font-bold uppercase tracking-widest text-[10px] hover:text-stone-600 transition">← Back</button>
+                        <button onclick="openTab('chap7', document.querySelectorAll('.nav-btn')[7])" class="bg-stone-100 text-stone-600 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-stone-200 transition">Next Chapter →</button>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 7: The Empty Cup -->
+                <div id="chap7" class="tab-content space-y-6">
+                    <span class="text-sm font-bold tracking-widest text-[#E3C683] uppercase">Chapter 07</span>
+                    <h2 class="text-3xl md:text-4xl serif text-brand-dark mb-8 leading-tight">You Can't Pour From an Empty Cup</h2>
+                    <p class="text-stone-600 text-lg leading-relaxed mb-6 italic">Whether you're a parent, a grandparent, or a caregiver... the weight is real. You are trying to be enough while feeling entirely empty.</p>
+                    
+                    <h3 class="text-2xl serif text-brand-dark mt-8 mb-4">The Weight You're Carrying</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">You're trying to manage your own big feelings while helping your child manage theirs. You're trying to be the calm presence when your own nervous system is screaming. If you're doing this from a distance, the guilt of not being there physically is crushing.</p>
+
+                    <h3 class="text-2xl serif text-brand-dark mt-8 mb-4">When Their Meltdown Triggers Yours</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">It happens. Their spiral activates your spiral. Suddenly you're both drowning. Don't feel guilty. You're a person with your own history. If you are too triggered yourself? <strong>Step away. Take a break.</strong> Come back when you're steadier. That's self-awareness, not failure.</p>
+
+                    <div class="highlight-box mt-10 border-[#E3C683] bg-[#E3C683]/10 text-center">
+                        <p class="text-lg md:text-xl serif italic text-brand-dark leading-relaxed">"Taking care of yourself isn't selfish. It's necessary. Put on your own oxygen mask first so you can actually show up for them."</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                        <div class="p-8 bg-white/50 rounded-3xl border border-stone-100 shadow-sm">
+                            <h4 class="font-bold text-stone-400 uppercase tracking-widest text-[9px] mb-6 border-b pb-2">The Lies We Tell Ourselves</h4>
+                            <ul class="space-y-4 text-stone-500 text-xs italic leading-relaxed">
+                                <li>"I should be able to handle this better."</li>
+                                <li>"I did a terrible job raising them."</li>
+                                <li>"Other people don't struggle like this."</li>
+                                <li>"I've ruined them."</li>
+                            </ul>
+                        </div>
+                        <div class="p-8 bg-white rounded-3xl border border-[#E3C683]/30 shadow-md ring-4 ring-[#E3C683]/5">
+                            <h4 class="font-bold text-[#8C7A4A] uppercase tracking-widest text-[9px] mb-6 border-b pb-2 italic">What is Actually True</h4>
+                            <ul class="space-y-4 text-stone-700 text-xs font-medium leading-relaxed">
+                                <li>You are doing the best you can in this moment.</li>
+                                <li>You are learning, and learning IS growth.</li>
+                                <li>You are the best caregiver for them because you care enough to keep trying.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 flex justify-between items-center pt-8 border-t border-stone-100">
+                        <button onclick="openTab('chap6', document.querySelectorAll('.nav-btn')[6])" class="text-stone-400 font-bold uppercase tracking-widest text-[10px] hover:text-stone-600 transition">← Back</button>
+                        <button onclick="openTab('chap8', document.querySelectorAll('.nav-btn')[8])" class="bg-stone-100 text-stone-600 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-stone-200 transition">Next Chapter →</button>
+                    </div>
+                </div>
+
+                <!-- CHAPTER 8: Moving Forward -->
+                <div id="chap8" class="tab-content space-y-6">
+                    <span class="text-sm font-bold tracking-widest text-[#A3B1A6] uppercase">Chapter 08</span>
+                    <h2 class="text-3xl md:text-4xl serif text-brand-dark mb-8 leading-tight">Moving Forward</h2>
+                    
+                    <p class="text-stone-600 text-lg leading-relaxed mb-8">You've made it through this guide. You have the apps, the grounding techniques, and the words to help yourself and your kids. This isn't everything. But it's a start.</p>
+
+                    <h3 class="text-2xl serif text-brand-dark mt-10 mb-4">What to Do Next</h3>
+                    <ul class="list-disc pl-5 space-y-3 text-stone-600 text-sm mb-10">
+                        <li><strong>Save this guide:</strong> Bookmark it on your phone so it is accessible for the hard moments.</li>
+                        <li><strong>Try one thing:</strong> Pick ONE technique that resonates and use it next time the feelings get big.</li>
+                        <li><strong>Be patient:</strong> You won't get it perfect the first time. That's okay.</li>
+                    </ul>
+
+                    <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-stone-100 text-center max-w-2xl mx-auto my-10">
+                        <h3 class="text-2xl md:text-3xl serif text-brand-dark mb-6 italic leading-tight">Before you go, remember this:</h3>
+                        <p class="text-stone-600 text-base leading-relaxed mb-6 italic">You're not broken. You're unfolding.</p>
+                        <p class="text-stone-600 text-base leading-relaxed mb-10 italic">The triggers, the spirals, the big feelings... they're not proof that something's wrong. They're part of being human. Part of feeling deeply. Part of caring. You picked up this guide because you wanted to do better. That's courage.</p>
+                        <div class="w-16 h-[1px] bg-stone-200 mx-auto mb-10"></div>
+                        <p class="text-stone-500 italic text-sm mb-6 leading-relaxed">"Healing isn't about being fixed, it's about coming home to ourselves."</p>
+                        <a href="https://www.youtube.com/results?search_query=luca+fogale+unfolding" target="_blank" class="inline-block text-brand-dark border-b border-brand-dark hover:text-stone-400 transition font-bold uppercase tracking-widest text-[10px]">Listen to "Unfolding" by Luca Fogale</a>
+                    </div>
+                    
+                    <div class="mt-20 text-center border-t border-stone-200 pt-16">
+                        <p class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2">With you in the unfolding,</p>
+                        <p class="text-4xl serif italic text-brand-dark mb-6">Barb</p>
+                        <p class="text-[9px] uppercase tracking-[0.2em] text-stone-400/70 font-bold">Everyday Modern... But Why?</p>
+                        <p class="mt-8">
+                            <a href="mailto:info@everydaymodernbutwhy.com" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 bg-white border border-stone-200 rounded-full text-[10px] font-bold uppercase tracking-widest text-stone-500 hover:text-stone-800 hover:border-stone-300 transition shadow-sm hover:scale-105 active:scale-95">
+                                ✉️ info@everydaymodernbutwhy.com
+                            </a>
+                        </p>
+                        <p class="mt-12 text-[10px] text-stone-400/80 italic max-w-lg mx-auto leading-relaxed">
+                            Disclaimer: Educational content only (personal experience) — not medical advice. If you need support, please see a qualified professional.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-12 flex justify-start items-center pt-8">
+                        <button onclick="openTab('chap7', document.querySelectorAll('.nav-btn')[7])" class="text-stone-400 font-bold uppercase tracking-widest text-[10px] hover:text-stone-600 transition">← Back</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openTab(tabId, btnElement) {
+            // Hide all tabs
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Show selected tab
+            const activeContent = document.getElementById(tabId);
+            if(activeContent) { activeContent.classList.add('active'); }
+            
+            // Handle Sidebar Buttons
+            const btns = document.querySelectorAll('.nav-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            
+            if(btnElement) {
+                btnElement.classList.add('active');
+            } else {
+                // If chapter buttons within text were clicked, sync the sidebar
+                const idMap = { 'orientation':0, 'chap1':1, 'chap2':2, 'chap3':3, 'chap4':4, 'chap5':5, 'chap6':6, 'chap7':7, 'chap8':8 };
+                const sideBtns = document.querySelectorAll('#mobile-nav .nav-btn');
+                if(sideBtns[idMap[tabId]]) { sideBtns[idMap[tabId]].classList.add('active'); }
+            }
+
+            // Always scroll to start of content smoothly
+            document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+
+            // Mobile menu behavior: Hide the menu after selecting an option
+            if(window.innerWidth < 1024) {
+                document.getElementById('mobile-nav').classList.add('hidden');
+            }
+        }
+
+        // On window resize, ensure menu resets properly
+        window.addEventListener('resize', () => {
+            if(window.innerWidth >= 1024) {
+                document.getElementById('mobile-nav').classList.remove('hidden');
+            } else {
+                document.getElementById('mobile-nav').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
